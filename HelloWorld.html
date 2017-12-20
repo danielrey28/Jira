@@ -2,7 +2,12 @@
 <html lang="en">
  <head>
      <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.9.12/css/aui.min.css" media="all">
-     <script src="aui/js/aui.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/sinon.js/1.15.4/sinon.js"></script>
+     <script src="//unpkg.com/@atlassian/aui@7.3.3/dist/aui/js/aui.js"></script>
+     <script src="//unpkg.com/@atlassian/aui@7.3.3/dist/aui/js/aui-experimental.js"></script>
+     <script src="//unpkg.com/@atlassian/aui@7.3.3/dist/aui/js/aui-datepicker.js"></script>
  </head>
  <body>
      <button id="dialog-show-button" class="aui-button">Show dialog</button>
@@ -16,13 +21,7 @@
         <div class="aui-dialog2-content">
             <form class="aui">
                 <div class="field-group">
-                    <label for="comment-email">Email <span class="aui-icon icon-required">(required)</span></label>
-                    <input class="text medium-field" type="text" 
-                        id="comment-email" name="comment-email" placeholder="you@example.com">
-                    <div class="description">Your primary email address.</div>
-                </div>
-                <div class="field-group">
-                    <label for="comment-input">Comment</label>
+                    <label for="comment-input">Comment <span class="aui-icon icon-required">(required)</span></label>
                     <textarea class="textarea" name="comment-input" 
                         id="comment-input" placeholder="Your comment here..."></textarea>
                 </div>
