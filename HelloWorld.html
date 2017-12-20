@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+     <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.9.12/css/aui.min.css" media="all">
+     <script src="aui/js/aui.min.js"></script>
+ </head>
+ <body>
+     <button id="dialog-show-button" class="aui-button">Show dialog</button>
+     <section id="demo-dialog" class="aui-dialog2 aui-dialog2-small aui-layer" role="dialog" aria-hidden="true">
+        <header class="aui-dialog2-header">
+            <h2 class="aui-dialog2-header-main">Resolve Issue</h2>
+            <a class="aui-dialog2-header-close">
+                <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+            </a>
+        </header>
+        <div class="aui-dialog2-content">
+            <form class="aui">
+                <div class="field-group">
+                    <label for="comment-email">Email <span class="aui-icon icon-required">(required)</span></label>
+                    <input class="text medium-field" type="text" 
+                        id="comment-email" name="comment-email" placeholder="you@example.com">
+                    <div class="description">Your primary email address.</div>
+                </div>
+                <div class="field-group">
+                    <label for="comment-input">Comment</label>
+                    <textarea class="textarea" name="comment-input" 
+                        id="comment-input" placeholder="Your comment here..."></textarea>
+                </div>
+                <div class="buttons-container">
+                    <div class="buttons">
+                        <input class="button submit" type="submit" value="Save" id="comment-save-button">
+                        <a class="cancel" href="#">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <footer class="aui-dialog2-footer">
+            <div class="aui-dialog2-footer-actions">
+                <button id="dialog-submit-button" class="aui-button aui-button-primary">Resolve It!</button>
+            </div>
+        </footer>
+    </section>
+     
+
+     <script id="connect-loader" data-options="sizeToParent:true;">
+         (function() {
+             var getUrlParam = function (param) {
+                 var codedParam = (new RegExp(param + '=([^&]*)')).exec(window.location.search)[1];
+                 return decodeURIComponent(codedParam);
+             };
+
+             var baseUrl = getUrlParam('xdm_e') + getUrlParam('cp');
+             var options = document.getElementById('connect-loader').getAttribute('data-options');
+
+             var script = document.createElement("script");
+             script.src = baseUrl + '/atlassian-connect/all.js';
+
+             if(options) {
+                 script.setAttribute('data-options', options);
+             }
+
+             document.getElementsByTagName("head")[0].appendChild(script);
+         })();
+     </script>
+     <script>
+        // Shows the dialog when the "Show dialog" button is clicked
+        AJS.$("#dialog-show-button").click(function(e) {
+            e.preventDefault();
+            AJS.dialog2("#demo-dialog").show();
+        });
+
+        // Hides the dialog
+        AJS.$("#dialog-submit-button").click(function (e) {
+            e.preventDefault();
+            AJS.dialog2("#demo-dialog").hide();
+        });
+    </script>
+
+ </body>
+</html>
